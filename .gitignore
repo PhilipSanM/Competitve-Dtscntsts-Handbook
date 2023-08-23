@@ -1,0 +1,56 @@
+.vscode
+
+# Python virtual environment
+venv/
+env/
+*.pyc
+__pycache__/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Data and model files
+data/
+models/
+
+# Logs and other generated files
+logs/
+*.log
+*.csv
+*.xlsx
+*.pkl
+
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.code-workspace
+
+# Compiled source
+__pycache__/
+*.py[cod]
+
+# Packages
+*.egg-info/
+dist/
+build/
+
+# Environments
+.venv/
+.conda/
+
+# Algo Experts specific
+algoexperts/
+algo_experts_tests/
+
+# Kaggle specific
+.kaggle/
+
+# System and temporary files
+.DS_Store
+Thumbs.db
+*.swp
