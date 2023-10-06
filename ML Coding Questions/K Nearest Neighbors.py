@@ -1,3 +1,14 @@
+# =-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# =-=--=-=-=-=-=-= K Nearest Neighbors =-=-=-=-=-=-=-=-=-==-=-=-=-=-=-
+# =-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+# Algo Experts
+# Date: 1 - October - 2023
+# Leetcode link = https://www.algoexpert.io/machine-learning/coding-questions/k-nearest-neighbors
+
+# My solution
+
+
 # Should use the `find_k_nearest_neighbors` function below.
 def predict_label(examples, features, k, label_key="is_intrusive"):
     # Write your code here.
@@ -62,3 +73,45 @@ def find_k_nearest_neighbors(examples, features, k):
         answ.append(ans)
 
     return answ
+
+
+# =-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# =-=--=-=-=-=-=-= K Nearest Neighbors =-=-=-=-=-=-=-=-=-==-=-=-=-=-=-
+# =-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+# Algo Experts
+# Date: 5 - October - 2023
+# Leetcode link = https://www.algoexpert.io/machine-learning/coding-questions/k-nearest-neighbors
+
+# Efficient solution
+# T:O(n) | S:O(n)
+
+import math
+
+
+# Should use the `find_k_nearest_neighbors` function below.
+def predict_label(examples, features, k, label_key="is_intrusive"):
+    # Write your code here.
+    k_nn = find_k_nearest_neighbors(examples, features, k)
+    votes = [examples[key][label_key] for key in k_nn]
+
+    return round(sum(votes) / k)
+
+
+def find_k_nearest_neighbors(examples, features, k):
+    # Write your code here.
+
+    distances = {}
+
+    for pid, features_label_map in examples.items():
+        distance = get_euclidean_distance(features, features_label_map["features"])
+        distances[pid] = distance
+    return sorted(distances, key=distances.get)[:k]
+
+
+def get_euclidean_distance(features, other_features):
+    diferences = []
+    for i in range(len(features)):
+        diferences.append((features[i] - other_features[i]) ** 2)
+
+    return (sum(diferences)) ** (0.5)
